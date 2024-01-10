@@ -44,3 +44,9 @@ Find the names of Pokemon that have more than one type. Display both the name an
 ```
 duckdb.sql("SELECT * FROM pokedex_df WHERE ARRAY_LENGTH(types) >1")
 ```
+
+List the top 10 pokemon by number of moves, and the moves they can learn
+```
+duckdb.sql("SELECT id, name, moves, ARRAY_LENGTH(moves) AS move_count FROM pokedex_df ORDER BY move_count DESC LIMIT 10")
+```
+
