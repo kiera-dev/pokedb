@@ -13,3 +13,28 @@ List the Pokémon that belong to the Water type.
 ```
 duckdb.sql("SELECT * FROM pokedex_df WHERE 'water' = ANY(types)")
 ```
+
+Filtering and Sorting:
+
+Display the top 10 Pokémon with the highest HP (Hit Points) in descending order.
+```
+
+```
+Retrieve the names and types of Pokémon that have a base speed stat greater than 90.
+```
+```
+
+List the Pokémon in alphabetical order by their names.
+```
+duckdb.sql("SELECT * FROM pokedex_df ORDER BY name ASC")
+```
+
+Count the number of Pokémon for each type.
+```
+duckdb.sql("SELECT flattened_type AS type, COUNT(*) AS pokemon_count FROM (SELECT UNNEST(types) AS flattened_type FROM pokedex_df) AS flattened_types GROUP BY flattened_type")
+```
+
+Write a query to find all Pokemon that have the move "Thunder Shock." Include the Pokemon name and ID in the result.
+```
+duckdb.sql("SELECT * FROM pokedex_df WHERE 'thunder' = ANY(moves)")
+```
