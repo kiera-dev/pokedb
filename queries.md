@@ -34,7 +34,12 @@ Count the number of Pokémon for each type.
 duckdb.sql("SELECT flattened_type AS type, COUNT(*) AS pokemon_count FROM (SELECT UNNEST(types) AS flattened_type FROM pokedex_df) AS flattened_types GROUP BY flattened_type")
 ```
 
-Write a query to find all Pokemon that have the move "Thunder Shock." Include the Pokemon name and ID in the result.
+Write a query to find all Pokemon that have the move "Thunder" Include the Pokemon name and ID in the result.
 ```
 duckdb.sql("SELECT * FROM pokedex_df WHERE 'thunder' = ANY(moves)")
+```
+
+Find the names of Pokemon that have more than one type. Display both the name and the types for these Pokemon.
+```
+duckdb.sql("SELECT * FROM pokedex_df WHERE ARRAY_LENGTH(types) >1")
 ```
