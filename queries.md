@@ -50,3 +50,7 @@ List the top 10 pokemon by number of moves, and the moves they can learn
 duckdb.sql("SELECT id, name, moves, ARRAY_LENGTH(moves) AS move_count FROM pokedex_df ORDER BY move_count DESC LIMIT 10")
 ```
 
+List average of all the stats 
+```
+duckdb.sql("SELECT AVG(hp) as average_hp, AVG(speed) as average_speed, AVG(height) as average_height, AVG(attack) as average_attack, AVG(defense) as average_defense, AVG(special_attack) as average_special_attack FROM pokedex_df")
+```
