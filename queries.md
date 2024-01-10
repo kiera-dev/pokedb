@@ -18,10 +18,11 @@ Filtering and Sorting:
 
 Display the top 10 Pokémon with the highest HP (Hit Points) in descending order.
 ```
-
+duckdb.sql("SELECT id, name, hp FROM pokedex_df ORDER BY hp DESC LIMIT 10")
 ```
 Retrieve the names and types of Pokémon that have a base speed stat greater than 90.
 ```
+duckdb.sql("SELECT id, name, speed FROM pokedex_df WHERE speed > 90 ORDER BY speed DESC")
 ```
 
 List the Pokémon in alphabetical order by their names.
