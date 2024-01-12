@@ -54,3 +54,18 @@ List average of all the stats
 ```
 duckdb.sql("SELECT AVG(hp) as average_hp, AVG(speed) as average_speed, AVG(height) as average_height, AVG(attack) as average_attack, AVG(defense) as average_defense, AVG(special_attack) as average_special_attack FROM pokedex_df")
 ```
+
+Write a query to find the top 5 Pokémon with the highest base Attack stat. Include their names and Attack stats in the result.
+```
+duckdb.sql("SELECT * FROM pokedex_df ORDER BY attack DESC LIMIT 5")
+```
+
+Create a query to retrieve the names and types of Pokémon, ordered first by type and then alphabetically within each type.
+```
+duckdb.sql("SELECT id,name,types FROM pokedex_df ORDER BY types ASC, name ASC")
+```
+
+Retrieve the Pokémon with the highest base HP for each type. Include the type, Pokémon name, and HP stat in the result.
+```
+duckdb.sql("SELECT DISTINCT ON (types) name,hp,types FROM pokedex_df ORDER BY hp DESC")
+```
