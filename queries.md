@@ -69,3 +69,10 @@ Retrieve the Pokémon with the highest base HP for each type. Include the type, 
 ```
 duckdb.sql("SELECT DISTINCT ON (types) name,hp,types FROM pokedex_df ORDER BY hp DESC")
 ```
+
+List the most learnable moves in descending order
+```
+duckdb.sql("SELECT flattened_move AS move, COUNT(*) AS pokemon_count FROM (SELECT UNNEST(moves) AS flattened_move FROM pokedex_df) AS flattened_moves GROUP BY flattened_move ORDER BY 2 DESC")
+```
+
+
