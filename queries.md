@@ -80,4 +80,18 @@ Retrieve the types of Pokémon along with the count of Pokémon for each type. D
 duckdb.sql("SELECT types, COUNT(*) AS poke_count FROM pokedex_df GROUP BY types HAVING COUNT(*) > 10")
 ```
 
+Find all pokemon that have a name beginning with the letter c
+```
+duckdb.sql("SELECT id,name,types FROM pokedex_df WHERE name LIKE 'c%' ORDER BY name ASC")
+```
+
+Find all pokemon that have 70 - 100 hp. 
+```
+duckdb.sql("SELECT id,name,types,hp FROM pokedex_df WHERE hp BETWEEN 70 AND 100 ORDER BY name ASC")
+```
+
+Find all Pokemon that is not a fire type
+```
+duckdb.sql("SELECT id,name,types,hp FROM pokedex_df WHERE NOT 'fire' = ANY(types) ORDER BY name ASC")
+```
 
