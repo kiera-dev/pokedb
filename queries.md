@@ -75,4 +75,9 @@ List the most learnable moves in descending order
 duckdb.sql("SELECT flattened_move AS move, COUNT(*) AS pokemon_count FROM (SELECT UNNEST(moves) AS flattened_move FROM pokedex_df) AS flattened_moves GROUP BY flattened_move ORDER BY 2 DESC")
 ```
 
+Retrieve the types of Pokémon along with the count of Pokémon for each type. Display only types with more than 10 Pokémon.
+```
+duckdb.sql("SELECT types, COUNT(*) AS poke_count FROM pokedex_df GROUP BY types HAVING COUNT(*) > 10")
+```
+
 
