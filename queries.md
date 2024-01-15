@@ -95,3 +95,12 @@ Find all Pokemon that is not a fire type
 duckdb.sql("SELECT id,name,types,hp FROM pokedex_df WHERE NOT 'fire' = ANY(types) ORDER BY name ASC")
 ```
 
+Find pokemon that have fire or psychic in their types. 
+```
+duckdb.sql("SELECT id,name,types,hp FROM pokedex_df WHERE 'fire' = ANY(types) OR 'psychic' = ANY(types) ORDER BY name ASC")
+```
+
+Find pokemon that are either psychic or fire (no dual-types)
+```
+duckdb.sql("SELECT id,name,types,hp FROM pokedex_df WHERE 'fire' = ANY(types) AND ARRAY_LENGTH(types) = 1 OR 'psychic' = ANY(types) AND ARRAY_LENGTH(types) = 1 ORDER BY name ASC")
+```
